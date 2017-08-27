@@ -44,7 +44,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     public static final int MY_PERMISSIONS_REQUEST_READ_CONTACTS = 1;
     public static final int MY_PERMISSIONS_REQUEST_WRITE_CONTACTS = 1;
 
-    public Button loadButton;
     public Button showMap;
     public GoogleMap contMap;
     private SupportMapFragment mapFragment;
@@ -55,18 +54,11 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        loadButton = (Button) findViewById(R.id.button);
-        showMap = (Button) findViewById(R.id.button2);
+        showMap = (Button) findViewById(R.id.button);
         mapFragment = new SupportMapFragment();
         requestPermission();
-        loadButton.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
-                v.setClickable(false);
-                GetContacts newContacts = new GetContacts();
-                newContacts.execute();
-            }
-        });
-
+        GetContacts newContacts = new GetContacts();
+        newContacts.execute();
         showMap.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 v.setClickable(false);
